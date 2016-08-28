@@ -5,4 +5,4 @@ demo中对比了两种方法的用法
 
 ##Demo最后的效果图片
 ![over0](https://github.com/sky-mxc/AndroidDemo/blob/master/downloadimage/src/main/res/mipmap-hdpi/over0.png)
-![over1](https://github.com/sky-mxc/AndroidDemo/blob/master/downloadimage/src/main/res/mipmap-hdpi/over1.png)
+![over1](https://github.com/sky-mxc/AndroidDemo/blob/master/downloadimage/src/main/res/mipmap-hdpi/voer1.png)
