@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/downloadimage/downloadimage.iml" filepath="$PROJECT_DIR$/downloadimage/downloadimage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intent_intentFilter/intent_intentFilter.iml" filepath="$PROJECT_DIR$/intent_intentFilter/intent_intentFilter.iml" />
+    </modules>
+  </component>
+</project>

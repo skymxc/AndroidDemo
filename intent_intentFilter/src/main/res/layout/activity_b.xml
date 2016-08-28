@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".BActivity">
+
+    <RadioGroup
+        android:id="@+id/action_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <RadioButton
+            android:id="@+id/rb_x1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="com.skymxc.action.x1"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/rb_x2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="com.skymxc.action.x2"/>
+        <RadioButton
+            android:id="@+id/rb_x3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="com.skymxc.action.x3"/>
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/cb_c1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="com.skymxc.catagory.c1"/>
+    <CheckBox
+        android:id="@+id/cb_c2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="com.skymxc.catagory.c2"/>
+    <CheckBox
+        android:id="@+id/cb_c3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="com.skymxc.catagory.c3"/>
+
+    <EditText
+        android:id="@+id/edit_uri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入URI,例如：http://"
+        android:layout_margin="10dp"/>
+    <EditText
+        android:id="@+id/edit_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入type"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/bt_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动指定的活动"
+        android:onClick="click"
+        android:background="@drawable/shape_bg"/>
+</LinearLayout>
