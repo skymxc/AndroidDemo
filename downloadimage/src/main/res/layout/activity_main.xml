@@ -65,9 +65,10 @@
         android:max="100"
         android:maxHeight="4dp"
         android:minHeight="4dp"
+        android:progressDrawable="@drawable/progress_bg"
         style="?android:attr/progressBarStyleHorizontal"
         />
-    <!--android:progressDrawable="@drawable/progress_bg"-->
+
 
     <ImageView
         android:id="@+id/img2"
