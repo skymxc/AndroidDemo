@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/downloadimage/downloadimage.iml" filepath="$PROJECT_DIR$/downloadimage/downloadimage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getweather/getweather.iml" filepath="$PROJECT_DIR$/getweather/getweather.iml" />
       <module fileurl="file://$PROJECT_DIR$/intent_intentFilter/intent_intentFilter.iml" filepath="$PROJECT_DIR$/intent_intentFilter/intent_intentFilter.iml" />
     </modules>
   </component>
