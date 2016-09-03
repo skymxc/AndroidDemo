@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<item name="item_change" type="id"></item>
+    <item name="context_remove" type="id"/>
+    <item name="context_update" type="id"/>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/setting"
+        android:title="设置"
+        android:orderInCategory="0"
+        android:icon="@mipmap/ic_launcher">
+        <menu>
+            <item android:id="@+id/set_account"
+                android:title="账号设置"
+                android:icon="@mipmap/ic_launcher"/>
+            <item android:id="@+id/set_general"
+                android:title="通用设置"
+                android:icon="@mipmap/ic_launcher"/>
+        </menu>
+    </item>
+    <item android:id="@+id/feedback"
+        android:title="反馈"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/logout"
+        android:orderInCategory="1"
+        android:title="注销"/>
+</menu>

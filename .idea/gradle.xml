@@ -9,17 +9,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/downloadimage" />
-            <option value="$PROJECT_DIR$/getweather" />
-            <option value="$PROJECT_DIR$/intent_intentFilter" />
+            <option value="$PROJECT_DIR$/menus" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/downloadimage" />
-            <option value="$PROJECT_DIR$/getweather" />
-            <option value="$PROJECT_DIR$/intent_intentFilter" />
+            <option value="$PROJECT_DIR$/menus" />
           </set>
         </option>
       </GradleProjectSettings>

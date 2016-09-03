@@ -1,1 +1,2 @@
-include ':intent_intentFilter', ':downloadimage', ':getweather'
+include ':menus'
+
