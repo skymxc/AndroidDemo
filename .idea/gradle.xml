@@ -9,13 +9,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/menus" />
+            <option value="$PROJECT_DIR$/parsexml" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/menus" />
+            <option value="$PROJECT_DIR$/parsexml" />
           </set>
         </option>
       </GradleProjectSettings>
