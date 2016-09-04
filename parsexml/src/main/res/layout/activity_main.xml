@@ -15,4 +15,13 @@
         android:text="SAXParse"
         android:onClick="onClick"
         android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/pull_parse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sax_parse"
+        android:text="PullParse"
+        android:onClick="onClick"
+        android:textAllCaps="false"/>
 </RelativeLayout>
