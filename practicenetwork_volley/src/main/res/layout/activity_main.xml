@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.skymxc.demo.practicenetwork_volley.MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="检查更新"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/ver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/go"
+            android:text="v1"/>
+
+        <ImageView
+            android:id="@+id/go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/jiantou"
+            android:layout_marginRight="10dp"
+            android:onClick="onClick"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/load_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="GET加载数据"/>
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:divider="#ccc"
+        android:dividerHeight="1dp"
+        ></ListView>
+    <EditText
+        android:id="@+id/url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:hint="图片Url"
+        android:layout_margin="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/load_image_request"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="ImageRequest"
+            android:textAllCaps="false"
+            android:onClick="onClick"/>
+        <Button
+            android:id="@+id/load_image_loader"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="ImageLoader"
+            android:textAllCaps="false"
+            android:onClick="onClick"/>
+        <Button
+            android:id="@+id/load_image_network"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="NetworkImage"
+            android:textAllCaps="false"
+            android:onClick="onClick"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/image0"
+            android:layout_width="@dimen/image_w"
+            android:layout_height="@dimen/image_h" />
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="@dimen/image_h"
+            android:layout_height="@dimen/image_h" />
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/image2"
+            android:layout_width="@dimen/image_h"
+            android:layout_height="@dimen/image_h" />
+    </LinearLayout>
+</LinearLayout>
