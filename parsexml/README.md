@@ -2,4 +2,3 @@
 
 - SAX
 - Pull
-- DOM
