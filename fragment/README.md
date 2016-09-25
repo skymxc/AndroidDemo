@@ -5,6 +5,7 @@
 - TabLayout+viewpager
 
 > FragmentTabHost+viewpager | FramgentTabHost
-![](https://github.com/sky-mxc/AndroidDemo/blob/master/fragment/over/fragmentTabHost.png)
+![FramgentTabHost](https://github.com/sky-mxc/AndroidDemo/blob/master/fragment/over/fragmentTabHost.png)
+<hr/>
 > TabLayout + viewpager
-![](https://github.com/sky-mxc/AndroidDemo/blob/master/fragment/over/TabLayout.png)
+![TabLayout + viewpager](https://github.com/sky-mxc/AndroidDemo/blob/master/fragment/over/TabLayout.png)
