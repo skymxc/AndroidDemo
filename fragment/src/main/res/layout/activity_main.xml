@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity_main"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.skymxc.demo.fragment.MainActivity">
+
+  <Button
+      android:id="@+id/fragment_tabhost"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="FragmentTabHost"
+      android:textAllCaps="false"
+      android:onClick="onClick"/>
+
+ <Button
+      android:id="@+id/fragmnet_tab_pager"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="FragmentTabHost+viewPager"
+      android:textAllCaps="false"
+      android:onClick="onClick"/>
+
+ <Button
+      android:id="@+id/tab_layout_pager"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="TabLayout+viewPager"
+      android:textAllCaps="false"
+      android:onClick="onClick"/>
+
+
+
+</LinearLayout>

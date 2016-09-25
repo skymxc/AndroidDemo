@@ -4,3 +4,5 @@
 - downloadimage           结合Thread加载网络图片，使用AsyncTask加载网络图片
 - menus                    Menu 菜单的使用 OptionMenu，ContextMenu，PopupMenu,PopupWindow
 - parsexml                SAX pull DOM 解析XMl
+- animation                动画
+- fragment                  Fragment+viewpager FragmentTabHost Tablayout 仿简书底部菜单，自动轮播实现

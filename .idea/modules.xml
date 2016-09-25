@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jsonoperate/jsonoperate.iml" filepath="$PROJECT_DIR$/jsonoperate/jsonoperate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/animation/animation.iml" filepath="$PROJECT_DIR$/animation/animation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragment/fragment.iml" filepath="$PROJECT_DIR$/fragment/fragment.iml" />
     </modules>
   </component>
 </project>
