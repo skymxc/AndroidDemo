@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.skymxc.demo.androiddemo.share.ShareActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -53,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this,"系统中不存在可以执行此操作的程序",Toast.LENGTH_SHORT).show();
                 }
 
+                break;
+            case R.id.to_share:
+                in = new Intent(this, ShareActivity.class);
+                startActivity(in);
                 break;
         }
     }

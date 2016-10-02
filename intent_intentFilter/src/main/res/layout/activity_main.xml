@@ -32,4 +32,11 @@
         android:layout_margin="10dp"
         android:onClick="click"
         android:text="隐式启动 C Activity"/>
+    <Button
+        android:id="@+id/to_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="click"
+        android:text="启动分享Activity"/>
 </LinearLayout>

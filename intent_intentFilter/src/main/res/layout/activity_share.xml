@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_share"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.skymxc.demo.androiddemo.share.ShareActivity">
+
+
+    <EditText
+        android:id="@+id/edit_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入分享的标题"
+        android:text="分享标题测试"/>
+    <EditText
+        android:id="@+id/edit_context"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入分享的内容"
+        android:text="分享内容测试"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/add"
+        android:background="#ccc"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="分享文字"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/share_image_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="分享图片+文字"
+        android:onClick="onClick"/>
+   <Button
+        android:id="@+id/share_image_mult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="分享多个图片"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/share_photo_wx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="分享图片+文本到微信朋友圈"
+        android:onClick="onClick"/>
+
+    <!--<Button-->
+        <!--android:id="@+id/share_QQ"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="分享图片到QQ"-->
+        <!--android:onClick="onClick"/>-->
+
+</LinearLayout>
