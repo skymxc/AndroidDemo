@@ -1,2 +1,2 @@
-include ':animation', ':fragment'
+include ':animation', ':contentprovider', ':testcontentresolver'
 

@@ -10,7 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/animation" />
-            <option value="$PROJECT_DIR$/fragment" />
+            <option value="$PROJECT_DIR$/contentprovider" />
+            <option value="$PROJECT_DIR$/testcontentresolver" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
