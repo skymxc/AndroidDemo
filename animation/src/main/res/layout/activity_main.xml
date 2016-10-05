@@ -1,20 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.skymxc.demo.animation.MainActivity">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:adjustViewBounds="true"
         android:background="@drawable/drawable_frame"
         android:clickable="true"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal"/>
+    <Button
+        android:id="@+id/anim_alpha_xml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start AlphaAnimation"
+        android:textAllCaps="false"
         android:onClick="onClick"/>
-</RelativeLayout>
+    <Button
+        android:id="@+id/anim_alpha_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start AlphaAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/anim_translation_xml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start TranslationAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/anim_translation_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start TranslationAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/anim_rotate_xml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start RotateAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/anim_rotate_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start RotateAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/anim_scale_xml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start ScaleAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/anim_scale_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start ScaleAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/anim_set_xml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start SetAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/anim_set_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start SetAnimation"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/animator_value_xml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start ValueAnimator"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/animator_value_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start ValueAnimator"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/animator_object_xml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start ObjectAnimator"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/animator_object_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" start ObjectAnimator"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+</LinearLayout>
