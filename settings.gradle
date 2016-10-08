@@ -1,2 +1,2 @@
-include ':animation', ':contentprovider', ':testcontentresolver'
+include  ':permission'
 

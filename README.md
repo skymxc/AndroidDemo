@@ -9,3 +9,4 @@
 - jsonoperate        关于json 的操作  Android原生json操作 fastjson的操作，Gson的操作
 - contentprovider     ContentProvider 内容提供者 ContentObserver 内容观察者
 - testContentResolver   ContentResolver 测试内容提供者
+- permission       关于6.0运行时权限的解决方案
