@@ -1,2 +1,2 @@
-include ':permission', ':handler'
+include ':intent_intentFilter', ':handler'
 

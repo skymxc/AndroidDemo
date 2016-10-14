@@ -10,7 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/handler" />
-            <option value="$PROJECT_DIR$/permission" />
+            <option value="$PROJECT_DIR$/intent_intentFilter" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

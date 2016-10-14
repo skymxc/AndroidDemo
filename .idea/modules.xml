@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/handler/handler.iml" filepath="$PROJECT_DIR$/handler/handler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/permission/permission.iml" filepath="$PROJECT_DIR$/permission/permission.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intent_intentFilter/intent_intentFilter.iml" filepath="$PROJECT_DIR$/intent_intentFilter/intent_intentFilter.iml" />
     </modules>
   </component>
 </project>
