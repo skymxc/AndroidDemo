@@ -10,3 +10,5 @@
 - contentprovider     ContentProvider 内容提供者 ContentObserver 内容观察者
 - testContentResolver   ContentResolver 测试内容提供者
 - permission       关于6.0运行时权限的解决方案
+- handler    使用handler 实现自动轮播  ，简单使用handler
+- broadcast  广播 本地广播等

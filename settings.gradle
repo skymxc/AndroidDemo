@@ -1,2 +1,2 @@
-include ':intent_intentFilter', ':handler'
+include ':intent_intentFilter', ':handler', ':broadcast'
 

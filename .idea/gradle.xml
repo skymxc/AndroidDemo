@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/broadcast" />
             <option value="$PROJECT_DIR$/handler" />
             <option value="$PROJECT_DIR$/intent_intentFilter" />
           </set>
