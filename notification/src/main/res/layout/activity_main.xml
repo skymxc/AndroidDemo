@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity_main"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.skymxc.demo.notification.MainActivity">
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2">
+
+        <CheckBox android:id="@+id/default_hint"
+            android:text="声音，震动，呼吸灯 默认"/>
+
+        <CheckBox  android:id="@+id/sound"
+            android:text="指定声音"/>
+        <CheckBox
+            android:id="@+id/vibrate"
+            android:text="震动"/>
+
+        <CheckBox
+            android:id="@+id/light"
+            android:text="呼吸灯"/>
+
+        <CheckBox
+            android:id="@+id/show_progress"
+            android:text="显示进度条"/>
+        <CheckBox
+            android:id="@+id/show_indicator"
+            android:text="显示指示器"/>
+       <CheckBox
+            android:id="@+id/auto_clear"
+            android:text="响应后自动清除"/>
+        <CheckBox
+            android:id="@+id/never_clear"
+            android:text="不能删除"/>
+
+        <CheckBox
+            android:id="@+id/activity_intent"
+            android:text="增加Activity响应的intent"
+            android:layout_columnSpan="2"/>
+        <CheckBox
+            android:id="@+id/broadcast_intent"
+            android:text="增加Broadcast响应的intent"
+            android:layout_columnSpan="2"/>
+
+        <CheckBox
+            android:id="@+id/show_fullscreen"
+            android:text="悬挂式"/>
+       <CheckBox
+            android:id="@+id/custom_view"
+            android:text="使用自定义布局"/>
+    </GridLayout>
+
+    <Button
+        android:id="@+id/send_normal_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送基本通知"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/send__notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送通知"
+        android:onClick="onClick"/>
+
+   <Button
+        android:id="@+id/cancel_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消通知"
+        android:onClick="onClick"/>
+
+   <Button
+        android:id="@+id/cancel_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消全部通知"
+        android:onClick="onClick"/>
+
+</LinearLayout>
