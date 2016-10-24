@@ -9,9 +9,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/broadcast" />
-            <option value="$PROJECT_DIR$/handler" />
+            <option value="$PROJECT_DIR$/browser" />
             <option value="$PROJECT_DIR$/intent_intentFilter" />
+            <option value="$PROJECT_DIR$/notification" />
+            <option value="$PROJECT_DIR$/recyclerview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

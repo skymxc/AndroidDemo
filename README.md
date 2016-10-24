@@ -12,3 +12,7 @@
 - permission       关于6.0运行时权限的解决方案
 - handler    使用handler 实现自动轮播  ，简单使用handler
 - broadcast  广播 本地广播等
+- notification  扩展通知 ，悬挂式通知，自定义视图通知 notification的各种使用
+- recyclerView  关于 RecyclerView最基本的使用Demo 三种布局的实现 子项装饰的实现 
+- Browser WebView的基本使用 浏览网页 js交互 调用本地API
+- Notifiction notification 通知的基本使用

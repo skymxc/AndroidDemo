@@ -1,2 +1,2 @@
-include ':intent_intentFilter', ':handler', ':broadcast'
+include ':intent_intentFilter', ':notification', ':recyclerview', ':browser'
 
