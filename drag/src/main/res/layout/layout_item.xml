@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.skymxc.demo.drag.SwipeItemLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:background="@android:color/darker_gray">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="content"
+            android:textColor="@android:color/white"
+            android:clickable="true"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/action_delete"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_red_light"
+            android:layout_height="match_parent"
+            android:text="删除"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/action_update"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_dark"
+            android:layout_height="match_parent"
+            android:text="修改"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:clickable="true"/>
+
+    </LinearLayout>
+
+</com.skymxc.demo.drag.SwipeItemLayout>
