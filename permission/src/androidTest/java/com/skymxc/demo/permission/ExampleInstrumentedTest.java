@@ -1,4 +1,4 @@
-package com.skymxc.demo.permission;
+package com.skymxc.drag.permission;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

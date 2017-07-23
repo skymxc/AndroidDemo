@@ -1,4 +1,4 @@
-package com.skymxc.demo.recyclerview.entity;
+package com.skymxc.drag.recyclerview.entity;
 
 /**
  * Created by sky-mxc

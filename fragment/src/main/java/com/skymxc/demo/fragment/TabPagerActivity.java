@@ -1,4 +1,4 @@
-package com.skymxc.demo.fragment;
+package com.skymxc.drag.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.skymxc.demo.fragment.adapter.FragmentAdapter;
-import com.skymxc.demo.fragment.fragment.AttachFragment;
-import com.skymxc.demo.fragment.fragment.ContactFragment;
-import com.skymxc.demo.fragment.fragment.DiscoverFragment;
-import com.skymxc.demo.fragment.fragment.MsgFragment;
+import com.skymxc.drag.fragment.adapter.FragmentAdapter;
+import com.skymxc.drag.fragment.fragment.AttachFragment;
+import com.skymxc.drag.fragment.fragment.ContactFragment;
+import com.skymxc.drag.fragment.fragment.DiscoverFragment;
+import com.skymxc.drag.fragment.fragment.MsgFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.skymxc.demo.recyclerview;
+package com.skymxc.drag.recyclerview;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

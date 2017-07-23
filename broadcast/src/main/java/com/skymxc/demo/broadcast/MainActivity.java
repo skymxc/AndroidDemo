@@ -1,4 +1,4 @@
-package com.skymxc.demo.broadcast;
+package com.skymxc.drag.broadcast;
 
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -7,7 +7,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.skymxc.demo.broadcast.receiver.LocalReceiver;
+import com.skymxc.drag.broadcast.receiver.LocalReceiver;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 

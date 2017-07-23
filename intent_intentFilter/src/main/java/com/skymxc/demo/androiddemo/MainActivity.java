@@ -1,4 +1,4 @@
-package com.skymxc.demo.androiddemo;
+package com.skymxc.drag.androiddemo;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.skymxc.demo.androiddemo.share.ShareActivity;
+import com.skymxc.drag.androiddemo.share.ShareActivity;
 
 public class MainActivity extends AppCompatActivity {
 

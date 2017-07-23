@@ -1,4 +1,4 @@
-package com.skymxc.demo.contentprovider.util;
+package com.skymxc.drag.contentprovider.util;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;

@@ -1,4 +1,4 @@
-package com.skymxc.demo.recyclerview;
+package com.skymxc.drag.recyclerview;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;

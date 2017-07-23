@@ -1,4 +1,4 @@
-package com.skymxc.demo.broadcast;
+package com.skymxc.drag.broadcast;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

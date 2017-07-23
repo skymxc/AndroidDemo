@@ -1,4 +1,4 @@
-package com.skymxc.demo.jsonoperate;
+package com.skymxc.drag.jsonoperate;
 
 import org.junit.Test;
 

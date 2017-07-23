@@ -1,4 +1,4 @@
-package com.skymxc.demo.recyclerview;
+package com.skymxc.drag.recyclerview;
 
 import org.junit.Test;
 

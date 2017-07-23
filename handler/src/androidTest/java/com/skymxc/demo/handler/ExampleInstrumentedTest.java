@@ -1,4 +1,4 @@
-package com.skymxc.demo.handler;
+package com.skymxc.drag.handler;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

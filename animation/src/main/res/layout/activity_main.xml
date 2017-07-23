@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
-    tools:context="com.skymxc.demo.animation.MainActivity">
+    tools:context="com.skymxc.drag.animation.MainActivity">
 
     <ImageView
         android:id="@+id/image"

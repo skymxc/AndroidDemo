@@ -1,4 +1,4 @@
-package com.skymxc.demo.fragment.adapter;
+package com.skymxc.drag.fragment.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

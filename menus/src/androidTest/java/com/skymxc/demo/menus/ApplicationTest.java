@@ -1,4 +1,4 @@
-package com.skymxc.demo.menus;
+package com.skymxc.drag.menus;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

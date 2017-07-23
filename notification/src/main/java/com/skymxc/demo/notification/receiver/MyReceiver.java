@@ -1,4 +1,4 @@
-package com.skymxc.demo.notification.receiver;
+package com.skymxc.drag.notification.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

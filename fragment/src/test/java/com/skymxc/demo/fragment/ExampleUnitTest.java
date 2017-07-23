@@ -1,4 +1,4 @@
-package com.skymxc.demo.fragment;
+package com.skymxc.drag.fragment;
 
 import org.junit.Test;
 

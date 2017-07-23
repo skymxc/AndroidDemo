@@ -1,4 +1,4 @@
-package com.skymxc.demo.androiddemo;
+package com.skymxc.drag.androiddemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

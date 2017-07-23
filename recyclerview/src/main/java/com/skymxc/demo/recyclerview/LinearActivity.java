@@ -1,4 +1,4 @@
-package com.skymxc.demo.recyclerview;
+package com.skymxc.drag.recyclerview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Toast;
 
-import com.skymxc.demo.recyclerview.entity.Item;
+import com.skymxc.drag.recyclerview.entity.Item;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.skymxc.demo.browser;
+package com.skymxc.drag.browser;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

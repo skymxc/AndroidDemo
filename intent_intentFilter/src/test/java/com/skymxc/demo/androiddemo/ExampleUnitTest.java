@@ -1,4 +1,4 @@
-package com.skymxc.demo.androiddemo;
+package com.skymxc.drag.androiddemo;
 
 import org.junit.Test;
 

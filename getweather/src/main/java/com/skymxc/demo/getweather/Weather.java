@@ -1,4 +1,4 @@
-package com.skymxc.demo.getweather;
+package com.skymxc.drag.getweather;
 
 /**
  * Created by sky-mxc

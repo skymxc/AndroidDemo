@@ -1,4 +1,4 @@
-package com.skymxc.demo.parsexml;
+package com.skymxc.drag.parsexml;
 
 import android.text.TextUtils;
 import android.util.Log;

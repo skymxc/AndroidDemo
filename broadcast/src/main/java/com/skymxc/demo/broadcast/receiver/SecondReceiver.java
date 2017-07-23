@@ -1,4 +1,4 @@
-package com.skymxc.demo.broadcast.receiver;
+package com.skymxc.drag.broadcast.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

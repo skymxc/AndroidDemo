@@ -1,4 +1,4 @@
-package com.skymxc.demo.notification;
+package com.skymxc.drag.notification;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

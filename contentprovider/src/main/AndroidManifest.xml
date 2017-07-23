@@ -20,7 +20,7 @@
 
         -->
         <provider
-            android:authorities="com.skymxc.demo"
+            android:authorities="com.skymxc.drag"
             android:name=".util.StudentProvider"
             android:exported="true"/>
     </application>

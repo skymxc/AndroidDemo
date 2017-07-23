@@ -4,7 +4,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context="com.skymxc.demo.fragment.MainActivity">
+    tools:context="com.skymxc.drag.fragment.MainActivity">
 
   <Button
       android:id="@+id/fragment_tabhost"

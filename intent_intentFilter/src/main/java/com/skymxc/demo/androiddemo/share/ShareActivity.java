@@ -1,4 +1,4 @@
-package com.skymxc.demo.androiddemo.share;
+package com.skymxc.drag.androiddemo.share;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -17,13 +17,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.skymxc.demo.androiddemo.R;
+import com.skymxc.drag.androiddemo.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.skymxc.demo.androiddemo.R.id.share;
+import static com.skymxc.drag.androiddemo.R.id.share;
 
 public class ShareActivity extends AppCompatActivity  implements View.OnClickListener{
 

@@ -1,4 +1,4 @@
-package com.skymxc.demo.downloadimage;
+package com.skymxc.drag.downloadimage;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

@@ -1,4 +1,4 @@
-package com.skymxc.demo.notification;
+package com.skymxc.drag.notification;
 
 import org.junit.Test;
 

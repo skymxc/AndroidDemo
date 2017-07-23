@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity_main"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.skymxc.demo.permission.MainActivity">
+    tools:context="com.skymxc.drag.permission.MainActivity">
 
     <Button
         android:id="@+id/read_sms"

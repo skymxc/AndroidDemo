@@ -1,4 +1,4 @@
-package com.skymxc.demo.recyclerview;
+package com.skymxc.drag.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.skymxc.demo.recyclerview.entity.Item;
+import com.skymxc.drag.recyclerview.entity.Item;
 
 import java.util.List;
 

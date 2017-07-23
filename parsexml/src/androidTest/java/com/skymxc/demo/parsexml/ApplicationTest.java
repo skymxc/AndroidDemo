@@ -1,4 +1,4 @@
-package com.skymxc.demo.parsexml;
+package com.skymxc.drag.parsexml;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

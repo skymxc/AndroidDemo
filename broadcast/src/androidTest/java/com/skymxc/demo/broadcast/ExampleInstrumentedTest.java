@@ -1,4 +1,4 @@
-package com.skymxc.demo.broadcast;
+package com.skymxc.drag.broadcast;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.skymxc.demo.permission;
+package com.skymxc.drag.permission;
 
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;

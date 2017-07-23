@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.skymxc.demo.downloadimage.MainActivity">
+    tools:context="com.skymxc.drag.downloadimage.MainActivity">
 
     <EditText
         android:id="@+id/url"

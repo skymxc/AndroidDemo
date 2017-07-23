@@ -1,4 +1,4 @@
-package com.skymxc.demo.permission;
+package com.skymxc.drag.permission;
 
 import org.junit.Test;
 

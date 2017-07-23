@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.skymxc.demo.fragment.FragmentTabHostActivity">
+    tools:context="com.skymxc.drag.fragment.FragmentTabHostActivity">
 
     <FrameLayout
         android:id="@+id/container"

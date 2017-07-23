@@ -1,4 +1,4 @@
-package com.skymxc.demo.contentprovider;
+package com.skymxc.drag.contentprovider;
 
 import android.database.ContentObserver;
 import android.net.Uri;
@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.skymxc.demo.contentprovider.util.StudentProvider;
+import com.skymxc.drag.contentprovider.util.StudentProvider;
 
 public class MainActivity extends AppCompatActivity {
 

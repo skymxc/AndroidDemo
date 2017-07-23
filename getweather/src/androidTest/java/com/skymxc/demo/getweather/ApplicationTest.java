@@ -1,4 +1,4 @@
-package com.skymxc.demo.getweather;
+package com.skymxc.drag.getweather;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

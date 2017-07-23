@@ -1,4 +1,4 @@
-package com.skymxc.demo.animation;
+package com.skymxc.drag.animation;
 
 import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;

@@ -1,4 +1,4 @@
-package com.skymxc.demo.testcontentresolver;
+package com.skymxc.drag.testcontentresolver;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

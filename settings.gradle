@@ -1,2 +1,3 @@
-include ':intent_intentFilter', ':notification', ':recyclerview', ':browser'
+include ':drag'
+
 

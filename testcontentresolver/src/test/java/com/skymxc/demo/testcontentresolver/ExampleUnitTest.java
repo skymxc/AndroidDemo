@@ -1,4 +1,4 @@
-package com.skymxc.demo.testcontentresolver;
+package com.skymxc.drag.testcontentresolver;
 
 import org.junit.Test;
 

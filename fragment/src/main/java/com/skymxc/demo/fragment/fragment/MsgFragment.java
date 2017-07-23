@@ -1,4 +1,4 @@
-package com.skymxc.demo.fragment.fragment;
+package com.skymxc.drag.fragment.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

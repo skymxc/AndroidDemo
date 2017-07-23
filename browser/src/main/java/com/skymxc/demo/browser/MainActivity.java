@@ -1,4 +1,4 @@
-package com.skymxc.demo.browser;
+package com.skymxc.drag.browser;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;

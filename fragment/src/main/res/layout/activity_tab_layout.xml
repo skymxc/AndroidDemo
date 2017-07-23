@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.skymxc.demo.fragment.TabLayoutActivity">
+    tools:context="com.skymxc.drag.fragment.TabLayoutActivity">
 
     <!-- 使用自动关联-->
     <android.support.design.widget.TabLayout
