@@ -34,4 +34,9 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnActio
 
         Toast.makeText(this, "update->" + item, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onClick(String item, int position) {
+        Toast.makeText(this, "onClick->" + item, Toast.LENGTH_SHORT).show();
+    }
 }
