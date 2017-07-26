@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 
 /**
@@ -55,9 +56,28 @@ public class SwipeItemLayout extends LinearLayout {
         return mDragHelper.shouldInterceptTouchEvent(ev);
     }
 
+
+    float x = 0;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         mDragHelper.processTouchEvent(event);
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x = event.getRawX();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float gap = event.getRawX() - x;
+                int sl = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+                if (Math.abs(gap) > sl) {
+                    getParent().requestDisallowInterceptTouchEvent(true);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                x = 0;
+                break;
+        }
         return true;
     }
 
@@ -83,7 +103,7 @@ public class SwipeItemLayout extends LinearLayout {
 
         @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
-            dragDx+=dx;
+            dragDx += dx;
             if (child == mContentView) {
                 /**
                  * 这个位置 的范围应该是在 0和 -dragDistance之间；最大是0；最小是 -dragDistance
@@ -134,10 +154,10 @@ public class SwipeItemLayout extends LinearLayout {
                 } else {  //左滑
                     settleToOpen = true;
                 }
-            }else if(realDragX> mDragDistance/4){  //根据拖动距离判断
-                if (dragDx>0){ //右滑
+            } else if (realDragX > mDragDistance / 4) {  //根据拖动距离判断
+                if (dragDx > 0) { //右滑
                     settleToOpen = false;
-                }else{
+                } else {
                     settleToOpen = true;
                 }
             }

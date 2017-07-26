@@ -1,50 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.skymxc.demo.drag.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.skymxc.demo.drag.MainActivity">
 
 
-    <!--<com.skymxc.demo.drag.DragLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
 
-        <!--<TextView-->
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="60dp"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:background="@android:color/darker_gray"-->
-            <!--android:text="content"/>-->
-
-    <!--</com.skymxc.demo.drag.DragLayout>-->
-
-    <!--<com.skymxc.demo.drag.SwipeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="60dp"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:background="@android:color/darker_gray">-->
-
-        <!--</LinearLayout>-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="60dp"-->
-            <!--android:background="@android:color/holo_red_light"></LinearLayout>-->
-
-    <!--</com.skymxc.demo.drag.SwipeLayout>-->
+    <Button
+        android:id="@+id/to_drag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="DragLayout test"
+        android:textAllCaps="false"/>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    <Button
+        android:id="@+id/to_swipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="SwipeLayout test"
+        android:textAllCaps="false"/>
 
 
 </LinearLayout>
