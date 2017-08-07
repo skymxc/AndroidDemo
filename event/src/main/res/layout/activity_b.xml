@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.skymxc.demo.event.BActivity">
+
+    <Button
+        android:id="@+id/posting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="posting"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="main"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        app:layout_constraintLeft_toRightOf="@+id/posting"/>
+
+    <Button
+        android:id="@+id/async"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="async"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        app:layout_constraintLeft_toRightOf="@+id/main"/>
+
+    <Button
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="background"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        app:layout_constraintLeft_toRightOf="@id/async"/>
+
+
+</android.support.constraint.ConstraintLayout>
