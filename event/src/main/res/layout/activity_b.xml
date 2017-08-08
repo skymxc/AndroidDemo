@@ -15,31 +15,31 @@
         android:onClick="onClick"/>
 
     <Button
-        android:id="@+id/main"
+        android:id="@+id/other"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="main"
+        android:text="other"
         android:textAllCaps="false"
         android:onClick="onClick"
         app:layout_constraintLeft_toRightOf="@+id/posting"/>
 
     <Button
-        android:id="@+id/async"
+        android:id="@+id/to_c"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="async"
+        android:text="to c"
         android:textAllCaps="false"
         android:onClick="onClick"
-        app:layout_constraintLeft_toRightOf="@+id/main"/>
+        app:layout_constraintLeft_toRightOf="@+id/other"/>
 
     <Button
-        android:id="@+id/background"
+        android:id="@+id/remove_sticky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="background"
+        android:text="remove_sticky"
         android:textAllCaps="false"
         android:onClick="onClick"
-        app:layout_constraintLeft_toRightOf="@id/async"/>
+        app:layout_constraintLeft_toRightOf="@id/to_c"/>
 
 
 </android.support.constraint.ConstraintLayout>
