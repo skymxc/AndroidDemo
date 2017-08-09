@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.skymxc.demo.event.BActivity">
+
+    <Button
+        android:id="@+id/posting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="posting"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="other"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        app:layout_constraintLeft_toRightOf="@+id/posting"/>
+
+    <Button
+        android:id="@+id/to_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="to c"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        app:layout_constraintLeft_toRightOf="@+id/other"/>
+
+    <Button
+        android:id="@+id/remove_sticky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="remove_sticky"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        app:layout_constraintLeft_toRightOf="@id/to_c"/>
+
+
+</android.support.constraint.ConstraintLayout>
