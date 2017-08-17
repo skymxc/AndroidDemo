@@ -3,6 +3,11 @@ package com.skymxc.demo.down;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.skymxc.demo.down.events.EventComplete;
+import com.skymxc.demo.down.events.EventError;
+import com.skymxc.demo.down.events.EventProgress;
+import com.skymxc.demo.down.events.EventStart;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -24,18 +29,20 @@ public class DownTask extends Thread{
     protected int current;
     protected boolean pause;
 
+
     protected boolean stop;
     protected Observable observable;
+
     @Override
     public void run() {
         getDownLength();
         if (length==-1){
             //url地址不对，获取不到长度
-            Log.e("run","length=-1");
+           error("URL不正确",-1);
             return;
         }else if(length==0){
             //长度为0 URL地址不对
-            Log.e("run","length=0");
+            error("下载长度为0",-2);
             return;
         }
 
@@ -47,6 +54,8 @@ public class DownTask extends Thread{
             connection.addRequestProperty("Range", "bytes=" + current + "-" + length);
             connection.connect();
             if (connection.getResponseCode()==206){
+                EventStart eventStart = new EventStart(downURL,length);
+                post(eventStart);
                 //本地保存路径
                 outFile = new RandomAccessFile(downPath,"rws");
                 outFile.seek(current);
@@ -59,6 +68,8 @@ public class DownTask extends Thread{
                     //进度值保存
                     current+=length;
                     PrefUtil.putProgress(downURL,current);
+                    EventProgress progress = new EventProgress(current,length,downURL);
+                    post(progress);
                     if (pause||stop){
                         break;
                     }
@@ -69,12 +80,14 @@ public class DownTask extends Thread{
                 connection.disconnect();
                 if (!stop&&!pause){
                     //下载完毕 最好是MD5一下，是否完整
+                    EventComplete eventComplete = new EventComplete(downURL,downPath);
+                    post(eventComplete);
                 }
             }else{
                 //失败
                 int  code =connection.getResponseCode();
                 String msg = connection.getResponseMessage();
-                Log.e("run","code("+code+")msg->"+msg);
+                error(msg,code);
             }
 
         } catch (MalformedURLException e) {
@@ -107,5 +120,14 @@ public class DownTask extends Thread{
         }
     }
 
+    private void error(String msg,int code){
+        Log.e("error","code("+code+"),msg->"+msg);
+        EventError event = new EventError(code,msg,downURL);
+      post(event);
+    }
+
+    private void post(Object event){
+        observable.notifyObservers(event);
+    }
 
 }
