@@ -24,4 +24,9 @@ public class PrefUtil {
     public static int getProgress(String url){
         return preferences.getInt(url,0);
     }
+    public static void removeProgress(String url){
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.remove(url);
+        edit.commit();
+    }
 }

@@ -15,13 +15,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by mxc on 2017/8/17.
  * description:
  */
 
-public class DownTask extends Thread{
+public class DownTask implements Runnable{
 
     protected String downURL;
     protected int length=0;
@@ -29,9 +30,14 @@ public class DownTask extends Thread{
     protected int current;
     protected boolean pause;
 
-
     protected boolean stop;
     protected Observable observable;
+
+    public DownTask(String downURL,String downPath){
+        this.downPath = downPath;
+        this.downURL =downURL;
+        observable = new Observable();
+    }
 
     @Override
     public void run() {
@@ -79,6 +85,7 @@ public class DownTask extends Thread{
                 inputStream.close();
                 connection.disconnect();
                 if (!stop&&!pause){
+                    PrefUtil.removeProgress(downURL);
                     //下载完毕 最好是MD5一下，是否完整
                     EventComplete eventComplete = new EventComplete(downURL,downPath);
                     post(eventComplete);
@@ -97,6 +104,8 @@ public class DownTask extends Thread{
         }
 
     }
+
+
 
     public void getDownLength() {
         if (TextUtils.isEmpty(downURL)) return;
@@ -118,6 +127,13 @@ public class DownTask extends Thread{
             e.printStackTrace();
             length = -1;
         }
+    }
+
+    public void addObserver(Observer observer){
+        observable.addObserver(observer);
+    }
+    public void removeObserver(Observer observer){
+        observable.deleteObserver(observer);
     }
 
     private void error(String msg,int code){
