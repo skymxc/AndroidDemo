@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    tools:context="com.skymxc.demo.thread.CreateActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start"
+        android:id="@+id/start"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+
+    <Button
+        android:id="@+id/run"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/start"
+        android:text="启动线程_run"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/clean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clean"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        app:layout_constraintTop_toBottomOf="@+id/run"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/root"
+        app:layout_constraintRight_toRightOf="@+id/root"
+        app:layout_constraintTop_toTopOf="@+id/root"
+        app:layout_constraintBottom_toBottomOf="@+id/root"/>
+
+</android.support.constraint.ConstraintLayout>
