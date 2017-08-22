@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.concurrent.Executors;
+
 public class CreateActivity extends AppCompatActivity {
 
     TextView tvResult;
@@ -19,7 +21,6 @@ public class CreateActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("创建线程");
         setContentView(R.layout.activity_create);
         tvResult = (TextView) findViewById(R.id.result);
-
     }
 
     public void onClick(View view) {

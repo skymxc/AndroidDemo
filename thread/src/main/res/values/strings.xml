@@ -3,4 +3,5 @@
     <string name="create_thread">创建线程</string>
     <string name="start">启动线程_start</string>
     <string name="clean">clean</string>
+    <string name="title_activity_sync">SyncActivity</string>
 </resources>
