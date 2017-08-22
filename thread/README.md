@@ -359,3 +359,33 @@ Android UI是非线程安全的，所以关于UI的操作只能在UI线程操作
 - http://student-lp.iteye.com/blog/2083170
 - http://www.cnblogs.com/dennisit/archive/2013/02/24/2925288.html
 - http://lanvis.blog.163.com/blog/static/26982162009798422547/
+
+## 线程状态
+
+> 1. 新生状态（new）
+
+当一个线程的实例被创建即使用`new`关键字后台Thread类或者其子类创建一个线程对象后，此时该线程就处于新生状态，处于新生状态的线程有自己的内存空间，但该线程并没有运行，此时线程还不是活着的（not alive）
+
+> 2. 就绪状态（Runnable）
+
+通过调用线程实例的`start()`方法来启动线程使线程进入就绪状态(runnable);处于就绪状态的线程已经具备了运行条件，但还没被分配到CPU就是不一定会被立即执行，此时处于线程就绪队列，等待线程为期分配CPU，等待状态不是执行状态；此时线程是活着的（alive）；
+
+> 3. 运行状态（Running）
+
+一旦获取CPU（被JVM选中），线程就进入运行（running）状态，线程`run()`方法才开始被执行；在运行状态的线程执行自己的run()方法中的操作，知道调用其他的方法而终止、或者等待某种资源而阻塞、或者完成任务而死亡；如果在给定的时间片内没有执行结束，就会被系统给换下来回到线程的就绪状态；此时线程是活着的（alive）；
+
+> 4. 阻塞状态（Blocked）
+
+通过调用`join()`,`sleep()`,`wait()`或者资源被占用使线程处于阻塞(blocked)状态；处于Blocked状态的线程仍然是活着的（alive）；
+
+> 5. 死亡状态（Dead）
+
+当一个线程的`run()`方法运行完毕或被中断或被异常退出，该线程到达死亡(dead)状态。此时可能仍然存在一个该Thread的实例对象，当该Thready已经不可能在被作为一个可被独立执行的线程对待了，线程的独立的call stack已经被dissolved。一旦某一线程进入Dead状态，他就再也不能进入一个独立线程的生命周期了。对于一个处于Dead状态的线程调用start()方法，会出现一个运行期(runtime exception)的异常；处于Dead状态的线程不是活着的（not alive）。
+
+
+> 学习资料
+
+- http://www.cnblogs.com/DreamSea/archive/2012/01/11/JavaThread.html
+- http://www.cnblogs.com/whoislcj/p/5603277.html
+- http://student-lp.iteye.com/blog/2083170
+

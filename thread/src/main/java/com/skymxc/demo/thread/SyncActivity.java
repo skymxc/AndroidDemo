@@ -39,6 +39,7 @@ public class SyncActivity extends AppCompatActivity {
                 sale1.start();
                 sale2.start();
                 break;
+
         }
     }
 
@@ -130,4 +131,7 @@ public class SyncActivity extends AppCompatActivity {
             Log.e(Thread.currentThread().getName(), "没票了");
         }
     }
+
+
+
 }
