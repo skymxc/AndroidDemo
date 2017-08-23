@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateActivity" />
-        <activity
-            android:name=".SyncActivity"></activity>
+        <activity android:name=".SyncActivity" />
+        <activity android:name=".MessageActivity"></activity>
     </application>
 
 </manifest>

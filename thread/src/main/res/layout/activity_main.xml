@@ -20,4 +20,13 @@
         android:id="@+id/sync"
         app:layout_constraintLeft_toRightOf="@+id/create_thread"
         android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="消息机制"
+        android:id="@+id/message"
+        app:layout_constraintLeft_toRightOf="@+id/sync"
+        android:onClick="onClick"/>
 </android.support.constraint.ConstraintLayout>

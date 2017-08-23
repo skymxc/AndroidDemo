@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.skymxc.demo.thread.MessageActivity">
+
+    <Button
+        android:id="@+id/work_to_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="工作线程发送给主线程"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/main_to_work"
+        app:layout_constraintTop_toBottomOf="@+id/work_to_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主线程发送给工作新程"
+        android:onClick="onClick"/>
+
+
+    <Button
+        android:id="@+id/work_to_work"
+        app:layout_constraintTop_toBottomOf="@+id/main_to_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="工作线程A发送给工作线程B"
+        android:onClick="onClick"/>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this,SyncActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.message:
+                intent = new Intent(this,MessageActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 

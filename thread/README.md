@@ -380,7 +380,7 @@ Android UI是非线程安全的，所以关于UI的操作只能在UI线程操作
 
 > 5. 死亡状态（Dead）
 
-当一个线程的`run()`方法运行完毕或被中断或被异常退出，该线程到达死亡(dead)状态。此时可能仍然存在一个该Thread的实例对象，当该Thready已经不可能在被作为一个可被独立执行的线程对待了，线程的独立的call stack已经被dissolved。一旦某一线程进入Dead状态，他就再也不能进入一个独立线程的生命周期了。对于一个处于Dead状态的线程调用start()方法，会出现一个运行期(runtime exception)的异常；处于Dead状态的线程不是活着的（not alive）。
+当一个线程的`run()`方法运行完毕或被中断或被异常退出，该线程到达死亡(dead)状态。此时可能仍然存在一个该Thread的实例对象，但该Thread已经不可能在被作为一个可被独立执行的线程对待了，线程的独立的call stack已经被dissolved。一旦某一线程进入Dead状态，他就再也不能进入一个独立线程的生命周期了。对于一个处于Dead状态的线程调用start()方法，会出现一个运行期(runtime exception)的异常；处于Dead状态的线程不是活着的（not alive）。
 
 
 > 学习资料
@@ -389,3 +389,157 @@ Android UI是非线程安全的，所以关于UI的操作只能在UI线程操作
 - http://www.cnblogs.com/whoislcj/p/5603277.html
 - http://student-lp.iteye.com/blog/2083170
 
+## 线程通信
+
+> Java中常规的通信方式这里我就不说了，看一下Android的消息机制
+
+Java常规的通信方式传送门->http://ifeve.com/thread-signaling
+
+*Android中的消息机制可以用于线程间通信也可用于在各个组件间通信,这里只总结一下怎么在线程间使用*
+
+消息机制中重要的API
+
+- Message 线程间通信就是在传递消息，Message就是消息的载体。常用的有四个字段：arg1，arg2，what，obj。obj可以携带Object对象，其余三个可以携带整形数据
+- MessageQueue 消息队列，它主要用于存放所有通过Handler发送的消息（也就是一个个Message），这部分的消息会一直存在于消息队列中，等待被处理。每个线程中只会有一个MessageQueue对象。
+- Looper 每个线程通过Handler发送的消息都保存在，MessageQueue中，Looper通过调用loop()的方法，就会进入到一个无限循环当中，然后每当发现MessageQueue中存在一条消息，就会将它取出，并传递到Handler的handleMessage()方法中。
+- Handler 发送消息，处理消息
+- Thread 线程 每个线程中只会有一个Looper对象。
+
+> 运行机制
+
+在哪个Thread中创建Handler，默认情况下Handler就会获取哪个线程中的Looper（前提是Looper创建好了）；handler发送消息就是将消息发送到了自己持有的这个Looper对象里；
+Looper内有一个MessageQueue，消息就存放在队列里，一旦Looper的`loop()`方法被调用就会开启无限循环模式，一直循环遍历这个队列，从中取Handler发送的消息，没有消息就阻塞；一旦有消息就唤醒线程取出来；
+从MessageQueue中取出的消息，会调用本身target持有的handler实例来处理这个消息;
+
+**综上所述，线程间通信handler就可以实现；**
+
+> 主线程给工作线程发消息
+
+想要在主线程给工作线程发消息，我们就得持有在工作线程中创建的handler；
+而创建handler之前必须先初始化一下Looper对象；
+handler创建完之后就开启Looper的无限循环来等待消息
+
+**创建一个线程并创建一个handler**
+
+```
+ Handler handlerA = null;
+ 
+    class ThreadA extends Thread implements Handler.Callback {
+
+        public ThreadA() {
+            super("ThreadA");
+        }
+
+        @Override
+        public void run() {
+            //创建此线程的Looper对象 ，一个线程只能有一个，所以此方法只能调用一次
+            Looper.prepare();
+            handlerA = new Handler(this);
+            //开始循环遍历
+            Looper.loop();
+        }
+
+        @Override
+        public boolean handleMessage(Message msg) {
+            switch (msg.what) {
+                case 100:
+                    Log.e("handleMessage", Thread.currentThread().getName() + ";src->" + msg.obj);
+                    break;
+            }
+            return false;
+        }
+    }
+
+```
+
+**使用handlerA发送消息**
+
+```
+                //创建一个消息
+                Message msg = new Message();
+                msg.what = 100; //标识你这消息想要干啥
+                msg.obj = Thread.currentThread().getName();
+
+                /**
+                 * 因为handler 里持有所在线程的Looper，所有handler发送的消息会在所在线程中执行
+                 */
+                //发送给A线程
+                handlerA.sendMessage(msg);
+```
+
+**看一个log** 处理线程是ThreadA，消息来源是Main线程
+```
+08-23 16:26:02.609 E/handleMessage: ThreadA;src->main
+```
+
+> 工作线程发给主线程
+
+与上面的同理，想要给主线程发送消息，拿到主线程的handler就可以了；
+
+因为点击事件是在UI线程中响应的，所以想让工作线程给主线程发送一个消息就麻烦一点，我这里为了测试做了个中转，先给B线程发送一个信号，B接到这个信号就给主线程发消息
+
+```
+
+    class ThreadB extends Thread implements Handler.Callback {
+
+        public ThreadB() {
+            super("ThreadB");
+        }
+
+        @Override
+        public void run() {
+            Looper.prepare();
+            handlerB = new Handler(this);
+            Looper.loop();
+
+        }
+
+        @Override
+        public boolean handleMessage(Message msg) {
+            switch (msg.what) {
+                case 100:
+                    Log.e("handleMessage", Thread.currentThread().getName() + ";src->" + msg.obj);
+                    break;
+                case 101:   //给main发送一个消息
+                    Message message = new Message();
+                    message.what = 100;
+                    message.obj = Thread.currentThread().getName();
+                    handler.sendMessage(message);
+                    break;
+            }
+            return false;
+        }
+    }
+
+```
+
+**在主线程创建的handler **
+ 
+```
+    /**
+     * Main 的handler
+     * 程序启动的时候就为Main线程创建了Looper
+     */
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            Log.e("handleMessage", Thread.currentThread().getName() + ";src->" + msg.obj);
+            return false;
+        }
+    });
+
+```
+
+*主线程的handler创建时没有提前创建Looper也没有调用Looper的`loop()`方法，是因为程序在启动的时候已经为主线程创建好了Looper，并且调用了`loop()`,一直在等待消息*
+
+> 工作线程给工作线程发消息
+
+跟上面两个一样，想给哪个线程发消息就要先拿到哪个线程的handler；我这里就不贴代码了；
+
+
+> 学习资料
+
+- http://www.jianshu.com/p/02962454adf7
+- http://www.jianshu.com/p/7657f541c461
+- http://www.cnblogs.com/younghao/p/5116819.html
+- http://www.voidcn.com/article/p-pmejydob-bbs.html
