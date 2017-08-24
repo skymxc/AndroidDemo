@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    tools:context="com.skymxc.demo.thread.ExecutorActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="单列线程池"
+        android:id="@+id/single"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="固定线程池"
+        android:id="@+id/fixed"
+        app:layout_constraintLeft_toLeftOf="@+id/single"
+        app:layout_constraintRight_toRightOf="@+id/cache"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="缓存线程池"
+        android:id="@+id/cache"
+        app:layout_constraintRight_toRightOf="@+id/root"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="调度线程池"
+        android:id="@+id/schedule"
+        app:layout_constraintTop_toBottomOf="@+id/cache"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/future"
+        android:textAllCaps="false"
+        android:id="@+id/future"
+        app:layout_constraintTop_toBottomOf="@+id/fixed"
+        app:layout_constraintLeft_toRightOf="@+id/schedule"
+        app:layout_constraintRight_toRightOf="@+id/root"
+        app:layout_constraintHorizontal_bias="0.3"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/schedule"
+        android:src="@mipmap/ic_launcher"
+        android:adjustViewBounds="true"/>
+
+</android.support.constraint.ConstraintLayout>

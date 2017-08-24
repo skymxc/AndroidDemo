@@ -543,3 +543,177 @@ handler创建完之后就开启Looper的无限循环来等待消息
 - http://www.jianshu.com/p/7657f541c461
 - http://www.cnblogs.com/younghao/p/5116819.html
 - http://www.voidcn.com/article/p-pmejydob-bbs.html
+
+## 线程池
+
+> 为啥使用线程池
+
+- 减少频繁创建销毁线程带来的开销
+- 复用创建好的线程
+- 对线程进行简单的管理
+
+**`ExecutorService`是一个接口，定义了线程池的方法。**
+
+```
+public interface ExecutorService extends Executor {
+
+    void shutdown();//关闭线程池，不再接受新任务，当所有任务都执行完毕后，关闭线程池
+
+    List<Runnable> shutdownNow(); //关闭线程池，阻止等待任务启动并试图停止当前正在执行的任务，停止接收新的任务，返回处于等待的任务列表
+
+    boolean isShutdown(); //是否关闭
+
+    boolean isTerminated();//如果关闭后所有任务都已完成，则返回 true。注意，除非首先调用 shutdown 或 shutdownNow，否则 isTerminated 永不为 true。
+
+    boolean awaitTermination(long var1, TimeUnit var3) throws InterruptedException;//等待（阻塞）直到关闭或最长等待时间或发生中断,timeout - 最长等待时间 ,unit - timeout 参数的时间单位  如果此执行程序终止，则返回 true；如果终止前超时期满，则返回 false 
+
+    <T> Future<T> submit(Callable<T> var1); //提交一个返回值的任务用于执行，返回一个表示任务的未决结果的 Future。该 Future 的 get 方法在成功完成时将会返回该任务的结果。
+
+    <T> Future<T> submit(Runnable var1, T var2); // 提交一个 Runnable 任务用于执行，并返回一个表示该任务的 Future。该 Future 的 get 方法在成功完成时将会返回给定的结果
+
+    Future<?> submit(Runnable var1);///提交一个 Runnable 任务用于执行，并返回一个表示该任务的 Future。该 Future 的 get 方法在成功 完成时将会返回 null
+
+    <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> var1) throws InterruptedException; //执行给定的任务，当所有任务完成时，返回保持任务状态和结果的 Future 列表。返回列表的所有元素的 Future.isDone() 为 true。
+
+    <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> var1, long var2, TimeUnit var4) throws InterruptedException; //执行给定的任务，当所有任务完成时，返回保持任务状态和结果的 Future 列表。返回列表的所有元素的 Future.isDone() 为 true。
+
+    <T> T invokeAny(Collection<? extends Callable<T>> var1) throws InterruptedException, ExecutionException; //执行给定的任务，如果在给定的超时期满前某个任务已成功完成（也就是未抛出异常），则返回其结果。一旦正常或异常返回后，则取消尚未完成的任务。
+
+    <T> T invokeAny(Collection<? extends Callable<T>> var1, long var2, TimeUnit var4) throws InterruptedException, ExecutionException, TimeoutException;
+}
+```
+
+> `ThreadPoolExecutor`具体实现了`ExecutorService`接口，提供了一系列的参数来配置线程池，熟悉`ThreadPoolExecutor`可自定义线程池。 
+
+```
+    public ThreadPoolExecutor(int corePoolSize,
+                              int maximumPoolSize,
+                              long keepAliveTime,
+                              TimeUnit unit,
+                              BlockingQueue<Runnable> workQueue,
+                              ThreadFactory threadFactory,
+                              RejectedExecutionHandler handler) {
+```
+
+- corePoolSize 核心线程池数量
+- maximumPoolSize 最大线程数量
+- keepAliveTime  非核心线程闲置的超时时长，超过这个时长，非核心线程就会被回收,当allowCoreThreadTimeOut为true时，keepAliveTime同样作用于核心线程。
+- unit 时间单位，常用的为 TimeUnit.MILLISECONDS(毫秒)、TimeUnit.SECONDS（秒）、TimeUnit.MINUTES(分钟)，详情-》https://docs.oracle.com/javase/6/docs/api/java/util/concurrent/TimeUnit.html
+- workQueue 线程池中的任务队列，通过execute方法提交的Runnable对象会存储在这个参数中
+- threadFactory  线程工厂，为线程池提供创建线程的功能，是个接口，提供Thread newThread(Runnable r)方法；通常用默认的`Executors.defaultThreadFactory()`即可
+- handler 拒绝策略，当线程池无法执行新任务时，可能由于线程队列已满或无法成功执行任务，这时候 ThreadPoolExecutor会调用handler的 rejectedExecution的方法，默认会抛出RejectedExecutionException
+
+Android通过`Executors`为我们提供了几种线程池
+
+|方法|说明|
+|:---|:---|
+|Executors.newCachedThreadPool()|缓存线程池，线程数量不定，最大线程数为Integer.MAX_VALUE(相当于任意大),有新任务时会检查是否有空闲线程，没有则会创建线程，空闲线程超过60s会被回收，任何任务都会被立即执行，适合大量的耗时较少任务|
+|Executors.newFixedThreadPool(int nThreads)|固定型线程池，线程数量固定，只有核心线程并且无超时机制，当所有线程都执行任务时，新任务进入队列等待。能够快速响应请求|
+|Executors.newScheduledThreadPool(int corePoolSize) |调度型线程池，核心数量固定，非核心数量无限制，非核心线程一旦空闲立马回收。会根据Scheduled(任务列表)进行延迟执行，或者是进行周期性的执行.适用于一些周期性的工作|
+|EExecutors.newSingleThreadExecutor() |单例线程池，只有一个核心线程，所有任务都在这个线程中串行执行，不需要处理线程同步问题，在任意的时间段内，线程池中只有一个线程在工作...|
+
+在`ExecutorService`的方法中可以看到线程池除了可执行`Runnable`接口还可以执行`Callable<V>` 接口,并且可以通过`Future<V>`来感知线程状态和结果。
+
+因为`Runnable `的返回值为`void` 无法获取执行完毕后的结果 ，所以才有了`Callable<V>`，可以返回一个结果
+```
+public interface Callable<V> {
+    /**
+     * Computes a result, or throws an exception if unable to do so.
+     *
+     * @return computed result
+     * @throws Exception if unable to compute a result
+     */
+    V call() throws Exception;
+}
+```
+
+`Future<V>` 定义了几种方法来感知线程状态和获取结果 ，可以理解为管理线程的。Future提供了三种功能：
+
+1. 判断任务是否完成；
+2. 能够中断任务；
+3. 能够获取任务执行结果。
+
+```
+public interface Future<V> {
+
+    /**
+     * 尝试取消执行此任务。 如果任务已经完成，已经被取消或由于某种其他原因而无法取消，则此尝试将失败。返回false。
+     * 当此方法调用时此任务尚未开始，则此任务不会被运行。返回true。
+     * 如果任务已经开始，则{mayInterruptIfRunning}参数确定执行此任务的线程是否应该中断，以试图停止该任务。
+     * 此方法返回后，对{@link #isDone}的后续调用将始终返回{@code true}。 
+     * 如果此方法返回{@code true}，则后续调用{@link #isCancelled}将始终返回{@code true}。
+     * @param mayInterruptIfRunning 线程在运行是否中断; 如果值为true表示中断正在进行的任务返回则返回true，值为false表示不中断返回false，如果任务无法取消，通常是因为它已经正常完成;
+     * {@code true} otherwise
+     */
+    boolean cancel(boolean mayInterruptIfRunning);
+
+    /**
+     * 如果在完成之前被取消 则返回 true，否则返回false
+     *
+     * @return {@code true} if this task was cancelled before it completed
+     */
+    boolean isCancelled();
+
+    /**
+     * 任务已经完成 返回 true。
+     * 任务被取消，异常，或者正常完成都会返回 true。此方法返回结果表示任务是否允许完毕
+     * @return {@code true} if this task completed
+     */
+    boolean isDone();
+
+    /**
+     * 获取任务完成的结果，如果任务没有执行完毕，则阻塞线程，直到拿到结果
+     * @return the computed result
+     * @throws CancellationException if the computation was cancelled
+     * @throws ExecutionException if the computation threw an
+     * exception
+     * @throws InterruptedException if the current thread was interrupted
+     * while waiting
+     */
+    V get() throws InterruptedException, ExecutionException;
+
+    /**
+     * 用来获取执行结果，如果在指定时间内，还没获取到结果，就直接返回null
+     * @param timeout 指定等待时间
+     * @param unit 等待时间单位
+     * @return the 执行结果
+     * @throws CancellationException if the computation was cancelled
+     * @throws ExecutionException if the computation threw an
+     * exception
+     * @throws InterruptedException if the current thread was interrupted
+     * while waiting
+     * @throws TimeoutException if the wait timed out
+     */
+    V get(long timeout, TimeUnit unit)
+        throws InterruptedException, ExecutionException, TimeoutException;
+}
+```
+
+因为`Future`只是一个接口，所以是无法直接用来创建对象使用的，因此就有了下面的`FutureTask`。
+
+可以看出RunnableFuture继承了Runnable接口和Future接口，而FutureTask实现了RunnableFuture接口。
+所以它既可以作为Runnable被线程执行，又可以作为Future得到Callable的返回值。
+```
+public class FutureTask<V> implements RunnableFuture<V> {}
+```
+
+```
+public interface RunnableFuture<V> extends Runnable, Future<V> {
+
+    void run();
+}
+```
+
+
+
+
+> 学习资料
+
+- https://tom510230.gitbooks.io/android_ka_fa_yi_shu_tan_suo/content/chapter11.html
+- http://www.cnblogs.com/whoislcj/p/5607734.html
+- http://blog.csdn.net/u010687392/article/details/49850803
+- http://www.cnblogs.com/RGogoing/p/4766971.html
+- http://www.cnblogs.com/dolphin0520/p/3949310.html
+
+
+> Demo https://github.com/sky-mxc/AndroidDemo/tree/master/thread
