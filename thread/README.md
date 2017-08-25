@@ -705,10 +705,91 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 ```
 
 
+`ScheduledExecutorService` 调度线程池 ，扩展了`ExecutorService`,增加了几个方法用来执行周期性或者定时的任务
+
+```
+public interface ScheduledExecutorService extends ExecutorService {
+
+    /**
+     * 在给定延迟时间后执行一个单次的操作
+     * @param command 要执行的操作
+     * @param delay 延迟时间
+     * @param unit 延迟时间单位
+     * @return a ScheduledFuture 代表一个未完成的任务，可以通过get()获取null，还可以通过getDelay()获取剩余延迟时间
+     * @throws RejectedExecutionException if the task cannot be
+     *         scheduled for execution
+     * @throws NullPointerException if command is null
+     */
+    public ScheduledFuture<?> schedule(Runnable command,
+                                       long delay, TimeUnit unit);
+
+    /**
+     * 在给定延迟时间后执行一个单次的 操作
+     * @param callable 单次操作
+     * @param delay 延迟时间
+     * @param unit 延迟时间单位
+     * @param <V> 返回结果类型
+     * @return a ScheduledFuture 可以通过get() 拿到结果，可以通过getDelay() 获取剩余延迟时间；
+     * @throws RejectedExecutionException if the task cannot be
+     *         scheduled for execution
+     * @throws NullPointerException if callable is null
+     */
+    public <V> ScheduledFuture<V> schedule(Callable<V> callable,
+                                           long delay, TimeUnit unit);
+
+    /**
+     *  创建并执行一个在给定初始延迟后首次启用的定期操作，后续操作具有给定的周期；
+     *  也就是将在 initialDelay 后开始执行，然后在initialDelay+period 后执行，
+     *  接着在 initialDelay + 2 * period 后执行，依此类推。
+     * @param command 要执行的操作
+     * @param initialDelay 首次执行延迟时间
+     * @param period 执行周期时间
+     * @param unit 时间单位
+     * @return a ScheduledFuture representing pending completion of
+     *         the series of repeated tasks.  The future's {@link
+     *         Future#get() get()} method will never return normally,
+     *         and will throw an exception upon task cancellation or
+     *         abnormal termination of a task execution.
+     * @throws RejectedExecutionException if the task cannot be
+     *         scheduled for execution
+     * @throws NullPointerException if command is null
+     * @throws IllegalArgumentException if period less than or equal to zero
+     */
+    public ScheduledFuture<?> scheduleAtFixedRate(Runnable command,
+                                                  long initialDelay,
+                                                  long period,
+                                                  TimeUnit unit);
+
+    /**
+     *  创建并执行一个在给定初始延迟后首次启用的定期操作，随后，在每一次执行终止和下一次执行开始之间都存在给定的延迟。
+     * @param command  要执行的定期任务
+     * @param initialDelay 首次执行的延迟时间
+     * @param delay 再上一次任务执行完毕后下次要执行的延迟时间
+     * @param unit 时间单位
+     * @return a ScheduledFuture representing pending completion of
+     *         the series of repeated tasks.  The future's {@link
+     *         Future#get() get()} method will never return normally,
+     *         and will throw an exception upon task cancellation or
+     *         abnormal termination of a task execution.
+     * @throws RejectedExecutionException if the task cannot be
+     *         scheduled for execution
+     * @throws NullPointerException if command is null
+     * @throws IllegalArgumentException if delay less than or equal to zero
+     */
+    public ScheduledFuture<?> scheduleWithFixedDelay(Runnable command,
+                                                     long initialDelay,
+                                                     long delay,
+                                                     TimeUnit unit);
+
+}
+
+```
+
 
 
 > 学习资料
 
+- https://developer.android.com/reference/java/util/concurrent/ScheduledExecutorService.html
 - https://tom510230.gitbooks.io/android_ka_fa_yi_shu_tan_suo/content/chapter11.html
 - http://www.cnblogs.com/whoislcj/p/5607734.html
 - http://blog.csdn.net/u010687392/article/details/49850803
@@ -716,4 +797,4 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 - http://www.cnblogs.com/dolphin0520/p/3949310.html
 
 
-> Demo https://github.com/sky-mxc/AndroidDemo/tree/master/thread
+> 关于本次的Demo https://github.com/sky-mxc/AndroidDemo/tree/master/thread

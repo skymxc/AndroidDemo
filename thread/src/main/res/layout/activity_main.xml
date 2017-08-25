@@ -36,6 +36,6 @@
         android:textAllCaps="false"
         android:text="线程池"
         android:id="@+id/executor"
-        app:layout_constraintLeft_toRightOf="@+id/message"
+        app:layout_constraintTop_toBottomOf="@+id/create_thread"
         android:onClick="onClick"/>
 </android.support.constraint.ConstraintLayout>
