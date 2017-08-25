@@ -565,7 +565,7 @@ public interface ExecutorService extends Executor {
 
     boolean isTerminated();//如果关闭后所有任务都已完成，则返回 true。注意，除非首先调用 shutdown 或 shutdownNow，否则 isTerminated 永不为 true。
 
-    boolean awaitTermination(long var1, TimeUnit var3) throws InterruptedException;//等待（阻塞）直到关闭或最长等待时间或发生中断,timeout - 最长等待时间 ,unit - timeout 参数的时间单位  如果此执行程序终止，则返回 true；如果终止前超时期满，则返回 false 
+    boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException;//等待（阻塞）直到关闭或最长等待时间或发生中断,timeout - 最长等待时间 ,unit - timeout 参数的时间单位  如果此执行程序终止，则返回 true；如果终止前超时期满，则返回 false 
 
     <T> Future<T> submit(Callable<T> var1); //提交一个返回值的任务用于执行，返回一个表示任务的未决结果的 Future。该 Future 的 get 方法在成功完成时将会返回该任务的结果。
 
@@ -785,6 +785,7 @@ public interface ScheduledExecutorService extends ExecutorService {
 
 ```
 
+*关于几种线程池的使用，代码都放在我的GitHub了。*
 
 
 > 学习资料
