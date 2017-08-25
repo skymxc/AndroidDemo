@@ -18,3 +18,4 @@
 - Notifiction notification 通知的基本使用
 - drag ViewDragHelper 使用
 - event EventBus3.0 使用
+- thread Android中的线程
