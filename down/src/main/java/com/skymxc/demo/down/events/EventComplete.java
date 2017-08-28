@@ -1,13 +1,13 @@
 package com.skymxc.demo.down.events;
 
+
 /**
  * Created by mxc on 2017/8/17.
  * description:
  */
 
-public class EventComplete {
+public class EventComplete extends EventBase {
 
-    protected String url;
     protected String path;
 
     public EventComplete(String url, String path) {

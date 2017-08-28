@@ -11,10 +11,11 @@ import android.preference.PreferenceManager;
 
 public class PrefUtil {
     private static Context context;
+    private static SharedPreferences preferences ;
     public static void init(Context context){
         PrefUtil.context  =  context;
+        preferences=  PreferenceManager.getDefaultSharedPreferences(context);
     }
-    private static SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
     public static void putProgress(String url,int progress){
         SharedPreferences.Editor edit = preferences.edit();

@@ -5,10 +5,9 @@ package com.skymxc.demo.down.events;
  * description:
  */
 
-public class EventProgress {
+public class EventProgress extends EventBase{
     protected int progress;
     protected int total;
-    protected String url;
 
     public EventProgress(int progress, int total, String url) {
         this.progress = progress;

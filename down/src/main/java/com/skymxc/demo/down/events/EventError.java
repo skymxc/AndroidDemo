@@ -5,10 +5,9 @@ package com.skymxc.demo.down.events;
  * description:
  */
 
-public class EventError {
+public class EventError extends EventBase{
     protected int code;
     protected String msg;
-    protected String url;
 
     public EventError(int code, String msg, String url) {
         this.code = code;

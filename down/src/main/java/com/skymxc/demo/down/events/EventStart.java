@@ -5,13 +5,27 @@ package com.skymxc.demo.down.events;
  * description:
  */
 
-public class EventStart {
-    protected String url;
+public class EventStart extends EventBase{
     protected int total;
+    protected String path;
+
+    public EventStart(String url, int total, String path) {
+        this.url = url;
+        this.total = total;
+        this.path = path;
+    }
 
     public EventStart(String url, int total) {
         this.url = url;
         this.total = total;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public EventStart() {
