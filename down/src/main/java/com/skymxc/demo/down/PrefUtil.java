@@ -10,10 +10,10 @@ import android.preference.PreferenceManager;
  */
 
 public class PrefUtil {
-    private static Context context;
+    public static Context context;
     private static SharedPreferences preferences ;
     public static void init(Context context){
-        PrefUtil.context  =  context;
+        PrefUtil.context  =  context.getApplicationContext();
         preferences=  PreferenceManager.getDefaultSharedPreferences(context);
     }
 

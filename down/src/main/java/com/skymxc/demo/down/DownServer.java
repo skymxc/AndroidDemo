@@ -8,6 +8,8 @@ import com.skymxc.demo.down.events.EventError;
 import com.skymxc.demo.down.events.EventProgress;
 import com.skymxc.demo.down.events.EventStart;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,17 +23,17 @@ import java.util.concurrent.Executors;
  * description: 文件下载
  */
 
-public class DownServer implements Observer {
+public class DownServer  extends CustomObserver {
 
     ExecutorService executorService;
     protected Map<String, DownTask> taskMap = new HashMap<>();
     protected Map<String, String> pathMap = new HashMap<>();
-    protected Map<String, Observable> taskObservableMap = new HashMap<>();
-    protected Observable observable;
+    protected Map<String, CustomObservable> taskObservableMap = new HashMap<>();
+    protected CustomObservable observable;
 
     public DownServer(int number) {
         executorService = Executors.newFixedThreadPool(number);
-        observable = new Observable();
+        observable = new CustomObservable();
     }
 
     public void add(String url, String path) {
@@ -62,42 +64,73 @@ public class DownServer implements Observer {
 
 
     @Override
-    public void update(Observable o, Object arg) {
-        if (arg instanceof EventError) {
-            EventError event = (EventError) arg;
-            error(event);
-        } else if (arg instanceof EventStart) {
-            EventStart event = (EventStart) arg;
-            start(event);
-        } else if (arg instanceof EventComplete) {
-            EventComplete event = (EventComplete) arg;
-            complete(event);
-        } else if (arg instanceof EventProgress) {
-            EventProgress event = (EventProgress) arg;
-            progress(event);
-        } else {
-            Log.e("update", "arg->" + arg.toString());
+    public void updateStart(EventStart event) {
+        Log.e("start","total->\n"+event.getTotal());
+        pathMap.put(event.getUrl(), event.getPath());
+        postSubEvent(event);
+        EventBus.getDefault().post(event);
+
+    }
+
+    @Override
+    public void updateComplete(EventComplete event) {
+        Log.e("complete","url->\n"+event.getPath());
+        postSubEvent(event);
+        EventBus.getDefault().post(event);
+        removeAllValue(event.getUrl());
+        if (taskMap.size() == 0) {
+            observable.notifyObservers(-1);
         }
+    }
+
+    @Override
+    public void updateError(EventError event) {
+        postSubEvent(event);
+        EventBus.getDefault().post(event);
+        removeAllValue(event.getUrl());
+        if (taskMap.size() == 0) {
+            observable.notifyObservers(-1);
+        }
+    }
+
+    @Override
+    public void updateProgress(EventProgress event) {
+        postSubEvent(event);
+        EventBus.getDefault().post(event);
     }
 
     private void progress(EventProgress event) {
         postSubEvent(event);
-        Log.e("progress","progress->\n"+event.getProgress());
+        EventBus.getDefault().post(event);
     }
 
     private void start(EventStart event) {
         Log.e("start","total->\n"+event.getTotal());
         pathMap.put(event.getUrl(), event.getPath());
         postSubEvent(event);
-
+        EventBus.getDefault().post(event);
 
     }
 
     private void complete(EventComplete event) {
-        Log.e("complete","url->\n"+event.getUrl());
+        Log.e("complete","url->\n"+event.getPath());
         postSubEvent(event);
+        EventBus.getDefault().post(event);
+        removeAllValue(event.getUrl());
         if (taskMap.size() == 0) {
             observable.notifyObservers(-1);
+        }
+    }
+
+    private void removeAllValue(String url) {
+        removeValue(taskObservableMap, url);
+        removeValue(pathMap, url);
+        removeValue(taskMap, url);
+    }
+
+    private void removeValue(Map  map,String key){
+        if (map.containsKey(key)){
+            map.remove(key);
         }
     }
 
@@ -109,19 +142,18 @@ public class DownServer implements Observer {
 
     private void error(EventError event) {
         postSubEvent(event);
-        taskMap.remove(event.getUrl());
-        pathMap.remove(event.getUrl());
-        taskObservableMap.remove(event.getUrl());
-
+        EventBus.getDefault().post(event);
+        removeAllValue(event.getUrl());
         if (taskMap.size() == 0) {
             observable.notifyObservers(-1);
         }
     }
 
     public void addObserver(String url, Observer observer) {
+        if (null ==observer) return;
         if (taskMap.containsKey(url)) {
             if (!taskObservableMap.containsKey(url)) {
-                taskObservableMap.put(url, new Observable());
+                taskObservableMap.put(url, new CustomObservable());
             }
             taskObservableMap.get(url).addObserver(observer);
         }
@@ -140,6 +172,10 @@ public class DownServer implements Observer {
     }
 
     public void addSObserver(Observer observer){
+        if (null ==observer) return;
         observable.addObserver(observer);
+    }
+    public void removeSObserver(Observer observer){
+        observable.deleteObserver(observer);
     }
 }

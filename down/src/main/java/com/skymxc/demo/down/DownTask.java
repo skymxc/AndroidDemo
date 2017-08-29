@@ -14,7 +14,6 @@ import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Observable;
 import java.util.Observer;
 
 /**
@@ -31,12 +30,12 @@ public class DownTask implements Runnable {
     protected boolean pause;
 
     protected boolean stop;
-    protected Observable observable;
+    protected CustomObservable observable;
 
     public DownTask(String downURL, String downPath) {
         this.downPath = downPath;
         this.downURL = downURL;
-        observable = new Observable();
+        observable = new CustomObservable();
     }
 
     @Override
@@ -74,7 +73,7 @@ public class DownTask implements Runnable {
                     //进度值保存
                     current += length;
                     PrefUtil.putProgress(downURL, current);
-                    EventProgress progress = new EventProgress(current, length, downURL);
+                    EventProgress progress = new EventProgress(current, this.length, downURL);
                     post(progress);
                     if (pause || stop) {
                         break;

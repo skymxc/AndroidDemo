@@ -21,7 +21,15 @@
             android:text="url"
             android:textColor="@android:color/holo_orange_dark"/>
 
-
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/url"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="gone"/>
 
     </android.support.constraint.ConstraintLayout>
 

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Message;
+import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -18,18 +20,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.skymxc.demo.down.events.EventComplete;
+import com.skymxc.demo.down.events.EventError;
+import com.skymxc.demo.down.events.EventProgress;
+import com.skymxc.demo.down.events.EventStart;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.EventBusBuilder;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+
+import javax.crypto.interfaces.PBEKey;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
     private static File mkdir;
-
+    MyAdapter myAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         data.add("http://jxb.sintoon.cn:80/audio/%E5%8C%97%E4%BA%AC%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E5%AE%9E%E9%AA%8C%E5%B0%8F%E5%AD%A6/2016%E7%BA%A7/10%E7%8F%AD/mxc%E5%AD%9F%E7%A5%A5%E8%B6%85/b9f255f9-d3c7-4789-96a8-168a31cb105e.amr");
         data.add("http://jxb.sintoon.cn:80/audio/%E5%8C%97%E4%BA%AC%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E5%AE%9E%E9%AA%8C%E5%B0%8F%E5%AD%A6/2016%E7%BA%A7/10%E7%8F%AD/mxc%E5%AD%9F%E7%A5%A5%E8%B6%85/d56efbc9-7cbe-460c-84ee-12417d72d23a.amr");
         data.add("http://jxb.sintoon.cn:80/audio/%E5%8C%97%E4%BA%AC%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E5%AE%9E%E9%AA%8C%E5%B0%8F%E5%AD%A6/2016%E7%BA%A7/10%E7%8F%AD/mxc%E5%AD%9F%E7%A5%A5%E8%B6%85/ee6538d5-20ba-436b-bcc6-50e1c72531e6.amr");
-        MyAdapter myAdapter = new MyAdapter(data,this);
+         myAdapter = new MyAdapter(data,this);
         recyclerView.setAdapter(myAdapter);
     }
 
@@ -90,7 +106,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    static class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
+    @Override
+    protected void onDestroy() {
+        myAdapter.destroy();
+        super.onDestroy();
+    }
+
+    static class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         private List<String> arrays = new ArrayList<>();
         private LayoutInflater inflater;
         private Context context;
@@ -98,6 +120,11 @@ public class MainActivity extends AppCompatActivity {
             this.arrays = data;
             this.context = context.getApplicationContext();
             inflater = LayoutInflater.from(context.getApplicationContext());
+            EventBus.getDefault().register(this);
+        }
+
+        public void destroy(){
+            EventBus.getDefault().unregister(this);
         }
         @Override
         public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -110,7 +137,27 @@ public class MainActivity extends AppCompatActivity {
                 holder.tvUrl.setText(arrays.get(position));
                 holder.itemView.setTag(position);
                 holder.itemView.setOnClickListener(onClickListener);
+                holder.pb.setVisibility(View.GONE);
                 return;
+            }
+            Message msg  = (Message) payloads.get(0);
+            switch (msg.what){
+                case 0:
+                    holder.pb.setVisibility(View.VISIBLE);
+                    holder.pb.setMax(msg.arg1);
+                    break;
+                case 1:
+                    holder.pb.setVisibility(View.GONE);
+                    holder.pb.setMax(0);
+                    break;
+                case 2:
+                    holder.pb.setProgress(msg.arg1);
+                    break;
+                case 3:
+                    holder.pb.setVisibility(View.GONE);
+                    holder.pb.setMax(0);
+                    holder.tvUrl.setText(holder.tvUrl.getText()+";出错");
+                    break;
             }
         }
 
@@ -135,13 +182,61 @@ public class MainActivity extends AppCompatActivity {
                 DownIntentService.startActionAdd(context,url,file.getPath());
             }
         };
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void onStartEvent(EventStart event){
+            int i = searchIndex(event.getUrl());
+            Message msg = new Message();
+            msg.what =0;
+//               msg.obj = event;
+            msg.arg1 = event.getTotal();
+            notifyItemChanged(i,msg);
+        }
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void onCompleteEvent(EventComplete event){
+            int i = searchIndex(event.getUrl());
+            Message msg = new Message();
+            msg.what =1;
+//            msg.obj= event;
+            notifyItemChanged(i,msg);
+        }
 
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void onProgressEvent(EventProgress event){
+            int i = searchIndex(event.getUrl());
+            Message msg = new Message();
+            msg.what = 2;
+            msg.arg1 = event.getProgress();
+            msg.arg2= event.getTotal();
+//            msg.obj= event;
+            notifyItemChanged(i,msg);
+        }
+        @Subscribe(threadMode = ThreadMode.MAIN)
+        public void onErrorEvent(EventError event){
+            int i = searchIndex(event.getUrl());
+            Message msg = new Message();
+            msg.what = 3;
+//            msg.obj = event;
+            notifyItemChanged(i,msg);
+        }
+       private int searchIndex(String url){
+           int index =-1;
+           int size = arrays.size();
+           for (int i=0;i<size;i++){
+               if (arrays.get(i).equals(url)){
+                   index = i;
+                   break;
+               }
+           }
+           return index;
+       }
         static class MyViewHolder extends RecyclerView.ViewHolder{
 
             TextView tvUrl;
+            ProgressBar pb;
             public MyViewHolder(View itemView) {
                 super(itemView);
                 tvUrl = (TextView) itemView.findViewById(R.id.url);
+                pb= (ProgressBar) itemView.findViewById(R.id.progress);
                 ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 itemView.setLayoutParams(lp);
             }
